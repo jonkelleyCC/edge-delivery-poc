@@ -34,11 +34,14 @@ export default function decorate(block) {
         videoElement.appendChild(source);
       }
 
-        firstChild.replaceWith(videoElement);
+      firstChild.replaceWith(videoElement);
     }
 
     // static image column
     if (index === 1) {
+      if (hasVideo) {
+        // hide/remove the image here
+      }
     }
   });
 }
