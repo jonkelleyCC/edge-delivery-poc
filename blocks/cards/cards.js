@@ -1,4 +1,9 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
+import { TITLE_SIZES } from '../../constants/constants.js';
+
+/**
+ * @param {HTMLElement} block The card block element
+ */
 
 export default function decorate(block) {
   const section = block.closest('.section');
@@ -22,7 +27,7 @@ export default function decorate(block) {
     ul.append(li);
   });
   ul.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach((heading) => {
-    heading.classList.add(`font-${titleSize}`);
+    heading.classList.add(TITLE_SIZES[titleSize]);
   });
   ul.querySelectorAll('picture > img').forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])));
   block.replaceChildren(ul);
