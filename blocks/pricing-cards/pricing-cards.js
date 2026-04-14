@@ -125,7 +125,6 @@ function buildOptimizedPictures(pictures) {
   });
 }
 
-
 /**
  * @param {HTMLElement} block The card block element
  */

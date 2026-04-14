@@ -80,16 +80,16 @@
   justify-content: center;
 }
 
-.cards .cards-horizontal li {
+.cards ul.cards-horizontal li {
   display: flex;
   width: 100%;
 }
 
-.cards .cards-horizontal li div.card-image {
+.cards ul.cards-horizontal li div.card-image {
   width: 55%;
 }
 
-.cards .cards-horizontal li div.card-body {
+.cards ul.cards-horizontal li div.card-body {
   width: 45%;
 }
 
