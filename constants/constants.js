@@ -7,4 +7,22 @@ const TITLE_SIZES = {
   xs: 'font-xs',
 };
 
-export default TITLE_SIZES;
+const PRICING_DETAILS = [
+  ['days', 'Days'],
+  ['tour', 'Tours'],
+  ['countries', 'Countries'],
+  ['price', 'Price'],
+];
+
+const TOGGLE_LABEL_ICONS = {
+  'sub-label': 'View Details',
+  'main-label': 'Hide Details',
+  'sub-icon': 'map-point',
+  'main-icon': 'camera',
+};
+
+export {
+  TITLE_SIZES,
+  PRICING_DETAILS,
+  TOGGLE_LABEL_ICONS,
+};

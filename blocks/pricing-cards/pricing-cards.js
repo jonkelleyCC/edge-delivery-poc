@@ -1,16 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
-
-const PRICING_DETAILS = [
-  ['days', 'Days'],
-  ['tour', 'Tours'],
-  ['countries', 'Countries'],
-  ['price', 'Price'],
-];
-
-const TOGGLE_SUB_IMAGES_LABEL = 'View Details';
-const TOGGLE_MAIN_IMAGE_LABEL = 'Hide Details';
-const TOGGLE_SUB_IMAGES_ICON = 'map-point';
-const TOGGLE_MAIN_IMAGE_ICON = 'camera';
+import { PRICING_DETAILS, TOGGLE_LABEL_ICONS } from '../../constants/constants.js';
 
 function extractPricingDetails(column) {
   const details = {};
@@ -84,8 +73,8 @@ function updateImageToggleState(imageColumn, toggle, showSubImages) {
   imageColumn.dataset.showSubImages = showSubImages;
   updateImageToggleIcon(
     toggle,
-    showSubImages ? TOGGLE_MAIN_IMAGE_ICON : TOGGLE_SUB_IMAGES_ICON,
-    showSubImages ? TOGGLE_MAIN_IMAGE_LABEL : TOGGLE_SUB_IMAGES_LABEL,
+    showSubImages ? TOGGLE_LABEL_ICONS['main-icon'] : TOGGLE_LABEL_ICONS['sub-icon'],
+    showSubImages ? TOGGLE_LABEL_ICONS['main-label'] : TOGGLE_LABEL_ICONS['sub-label'],
   );
   toggle.setAttribute('aria-pressed', showSubImages);
 }
