@@ -55,7 +55,7 @@
   flex-direction: row-reverse;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (width < 768px) {
   .cards .cards-horizontal li {
     display: block;
   }

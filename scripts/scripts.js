@@ -43,6 +43,11 @@ async function loadFonts() {
   }
 }
 
+function extractAmpersand(str) {
+  const match = str.match(/@\w+/);
+  return match ? match[0] : null;
+}
+
 /**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
@@ -116,7 +121,7 @@ function decorateButtons(main) {
         a.title = linkText;
         a.textContent = linkText;
         break;
-      case '@info': 
+      case '@info': {
         a.classList.add('info-button');
         a.title = linkText;
         a.textContent = '';
@@ -127,6 +132,7 @@ function decorateButtons(main) {
         a.append(icon, label);
         decorateIcons(a);
         break;
+      }
       default:
         a.classList.add('accent');
         a.title = linkText;
@@ -134,11 +140,6 @@ function decorateButtons(main) {
         break;
     }
   });
-}
-
-function extractAmpersand(str) {
-  const match = str.match(/@\w+/);
-  return match ? match[0] : null;
 }
 
 /**

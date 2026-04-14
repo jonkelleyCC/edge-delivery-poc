@@ -37,28 +37,28 @@
 
 /* Vikings Font */
 @font-face {
-  font-family: 'adobe-garamond-pro';
+  font-family: adobe-garamond-pro;
   font-style: normal;
   font-weight: 400;
   src: url('../fonts/AGaramondPro-Regular.otf') format('opentype');
 }
 
 @font-face {
-  font-family: 'adobe-garamond-pro';
+  font-family: adobe-garamond-pro;
   font-style: italic;
   font-weight: 400;
   src: url('../fonts/AGaramondPro-Italic.otf') format('opentype');
 }
 
 @font-face {
-  font-family: 'adobe-garamond-pro';
+  font-family: adobe-garamond-pro;
   font-style: normal;
   font-weight: 700;
   src: url('../fonts/AGaramondPro-Bold.otf') format('opentype');
 }
 
 @font-face {
-  font-family: 'adobe-garamond-pro';
+  font-family: adobe-garamond-pro;
   font-style: italic;
   font-weight: 700;
   src: url('../fonts/AGaramondPro-BoldItalic.otf') format('opentype');
@@ -105,4 +105,5 @@
   font-weight: 700;
   src: url('../fonts/VikingOpenSans-BoldItalic.woff2') format('woff2');
 }
+
 /* Vikings Font */
