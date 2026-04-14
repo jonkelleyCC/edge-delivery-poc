@@ -144,19 +144,6 @@ export default function decorate(block) {
       }
     }
 
-    if (bodyColumn && buttonsColumn && buttonsColumn.querySelector('.button-wrapper')) {
-      buttonsColumn.className = 'pricing-card-buttons';
-      const buttonWrapper = buttonsColumn.querySelectorAll('.button-wrapper');
-      if (buttonWrapper.length === 1) {
-        buttonsColumn.classList.add('pricing-card-buttons-single');
-      }
-      bodyColumn.append(buttonsColumn);
-    }
-
-    if (bodyColumn && buttonsColumn && buttonsColumn.children.length <= 0) {
-      buttonsColumn.remove();
-    }
-
     [...li.children].forEach((div) => {
       const pictures = [...div.querySelectorAll('picture')];
 
@@ -180,6 +167,19 @@ export default function decorate(block) {
 
     if (pricingBody.children.length) {
       li.append(pricingBody);
+    }
+
+    if (bodyColumn && buttonsColumn && buttonsColumn.querySelector('.button-wrapper')) {
+      buttonsColumn.className = 'pricing-card-buttons';
+      const buttonWrapper = buttonsColumn.querySelectorAll('.button-wrapper');
+      if (buttonWrapper.length === 1) {
+        buttonsColumn.classList.add('pricing-card-buttons-single');
+      }
+      pricingBody.append(buttonsColumn);
+    }
+
+    if (bodyColumn && buttonsColumn && buttonsColumn.children.length <= 0) {
+      buttonsColumn.remove();
     }
 
     ul.append(li);
