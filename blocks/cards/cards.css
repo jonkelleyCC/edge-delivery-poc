@@ -12,11 +12,23 @@
   background-color: var(--background-color);
 }
 
-.cards .cards-card-body {
+.cards .cards-default > ul > li {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.cards .card-body {
   margin: 16px;
 }
 
-.cards .cards-card-image {
+.cards .cards-default .card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.cards .card-image {
   line-height: 0;
 }
 
@@ -31,15 +43,41 @@
 }
 
 .cards > ul.cols-2 {
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
 }
 
 .cards > ul.cols-3 {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.cards li div.card-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.cards .cards-default li div.card-buttons {
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.cards li div.card-buttons p {
+  width: 50%;
+  max-width: 280px;
+}
+
+.cards li div.card-buttons a {
+  display: block;
 }
 
 .cards > ul.cards-horizontal {
   grid-template-columns: 1fr;
+}
+
+.cards > ul.cards-horizontal .card-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .cards .cards-horizontal li {
@@ -47,12 +85,27 @@
   width: 100%;
 }
 
-.cards .cards-horizontal li div {
-  width: 50%;
+.cards .cards-horizontal li div.card-image {
+  width: 55%;
+}
+
+.cards .cards-horizontal li div.card-body {
+  width: 45%;
 }
 
 .cards .cards-horizontal li:nth-of-type(even) {
   flex-direction: row-reverse;
+}
+
+@media screen and (width < 1024px) {
+  .cards > ul.cols-2 {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .cards li div.card-buttons-single p {
+    width: 100%;
+    max-width: none;
+  }
 }
 
 @media screen and (width < 768px) {
@@ -60,9 +113,14 @@
     display: block;
   }
 
-  .cards .cards-horizontal li div {
-    width: 100%;
+  .cards .cards-horizontal li div.card-image,
+  .cards .cards-horizontal li div.card-body {
+    width: auto;
   }
+
+.cards > ul.cards-horizontal .card-body{
+  display: block;
+}
 
   .cards .cards-horizontal li:nth-of-type(even) {
     flex-direction: row;

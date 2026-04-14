@@ -20,9 +20,29 @@ export default function decorate(block) {
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
     while (row.firstElementChild) li.append(row.firstElementChild);
+    const columnsInCard = [...li.children];
+    const bodyColumn = columnsInCard[1];
+    const buttonsColumn = columnsInCard[2];
+
+    if (bodyColumn && buttonsColumn && buttonsColumn.querySelector('.button-wrapper')) {
+      buttonsColumn.className = 'card-buttons';
+      const buttonWrapper = buttonsColumn.querySelectorAll('.button-wrapper');
+      if (buttonWrapper.length === 1) {
+        buttonsColumn.classList.add('card-buttons-single');
+      }
+      bodyColumn.append(buttonsColumn);
+    }
+
+    if (bodyColumn && buttonsColumn && buttonsColumn.children.length <= 0) {
+      buttonsColumn.remove();
+    }
+
     [...li.children].forEach((div) => {
-      if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-card-image';
-      else div.className = 'cards-card-body';
+      if (div.children.length === 1 && div.querySelector('picture')) {
+        div.className = 'card-image';
+      } else {
+        div.className = 'card-body';
+      }
     });
     ul.append(li);
   });

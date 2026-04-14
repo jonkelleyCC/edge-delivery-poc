@@ -48,6 +48,16 @@ function extractAmpersand(str) {
   return match ? match[0] : null;
 }
 
+export function extractClasses(str) {
+  const classes = [];
+  // const regex = /(?:^|\s)(@\w+)/g;
+  // let match;
+  // while ((match = regex.exec(str)) !== null) {
+  //   classes.push(match[1]);
+  // }
+  // return classes;
+}
+
 /**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
