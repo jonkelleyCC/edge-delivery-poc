@@ -1,8 +1,8 @@
 function handleExtractSymbol(str, symbol) {
   const match = str.match(new RegExp(`\\${symbol}\\w+`));
   const value = match ? {
-    'fullText': match[0],
-    'text': match[0].replace(symbol, ''),
+    fullText: match[0],
+    text: match[0].replace(symbol, ''),
   } : null;
   return value;
 }
@@ -14,4 +14,4 @@ function handleSplitValues(str) {
 export {
   handleExtractSymbol,
   handleSplitValues,
-}
+};

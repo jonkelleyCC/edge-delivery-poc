@@ -1,6 +1,6 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { TITLE_SIZES } from '../../constants/constants.js';
-import { transformButtonDiv } from '../../helpers/transformer-helper.js';
+import transformButtonDiv from '../../helpers/transformer-helper.js';
 
 /**
  * @param {HTMLElement} block The card block element

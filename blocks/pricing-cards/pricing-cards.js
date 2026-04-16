@@ -1,7 +1,7 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { PRICING_DETAILS, TOGGLE_LABEL_ICONS } from '../../constants/constants.js';
 import { handleExtractSymbol } from '../../helpers/extract-helper.js';
-import { transformButtonDiv } from '../../helpers/transformer-helper.js';
+import transformButtonDiv from '../../helpers/transformer-helper.js';
 
 function extractPricingDetails(column) {
   const details = {};
@@ -133,7 +133,6 @@ export default function decorate(block) {
     const dtcpColumn = columnsInCard[2];
     const buttonsColumn = columnsInCard[3];
 
-
     if (bodyColumn && bodyColumn.children.length > 0) {
       bodyColumn.childNodes.forEach((div) => {
         if (div.textContent.includes('@schedule')) {
@@ -143,7 +142,7 @@ export default function decorate(block) {
             div.textContent = div.textContent.replace(schedule.fullText, '').trim();
           }
         }
-      })
+      });
     }
 
     if (dtcpColumn) {
