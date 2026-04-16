@@ -50,23 +50,23 @@
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
 }
 
-.cards li div.card-buttons {
+.cards li div.buttons-container {
   display: flex;
   justify-content: center;
   gap: 15px;
 }
 
-.cards .cards-default li div.card-buttons {
+.cards .cards-default li div.buttons-container {
   margin-top: auto;
   padding-top: 16px;
 }
 
-.cards li div.card-buttons p {
+.cards li div.buttons-container p {
   width: 50%;
   max-width: 280px;
 }
 
-.cards li div.card-buttons a {
+.cards li div.buttons-container a {
   display: block;
 }
 
@@ -102,7 +102,7 @@
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 
-  .cards li div.card-buttons-single p {
+  .cards li div.buttons-container-single p {
     width: 100%;
     max-width: none;
   }
@@ -118,9 +118,9 @@
     width: auto;
   }
 
-.cards > ul.cards-horizontal .card-body{
-  display: block;
-}
+  .cards > ul.cards-horizontal .card-body{
+    display: block;
+  }
 
   .cards .cards-horizontal li:nth-of-type(even) {
     flex-direction: row;

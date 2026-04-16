@@ -1,5 +1,7 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { PRICING_DETAILS, TOGGLE_LABEL_ICONS } from '../../constants/constants.js';
+import { handleExtractSymbol } from '../../helpers/extract-helper.js';
+import { transformButtonDiv } from '../../helpers/transformer-helper.js';
 
 function extractPricingDetails(column) {
   const details = {};
@@ -131,6 +133,19 @@ export default function decorate(block) {
     const dtcpColumn = columnsInCard[2];
     const buttonsColumn = columnsInCard[3];
 
+
+    if (bodyColumn && bodyColumn.children.length > 0) {
+      bodyColumn.childNodes.forEach((div) => {
+        if (div.textContent.includes('@schedule')) {
+          const schedule = handleExtractSymbol(div.textContent, '@');
+          if (schedule) {
+            div.className = schedule.text;
+            div.textContent = div.textContent.replace(schedule.fullText, '').trim();
+          }
+        }
+      })
+    }
+
     if (dtcpColumn) {
       const details = extractPricingDetails(dtcpColumn);
       const detailsList = buildPricingDetails(details);
@@ -144,7 +159,7 @@ export default function decorate(block) {
       }
     }
 
-    [...li.children].forEach((div) => {
+    columnsInCard.forEach((div) => {
       const pictures = [...div.querySelectorAll('picture')];
 
       if (pictures.length) {
@@ -169,18 +184,7 @@ export default function decorate(block) {
       li.append(pricingBody);
     }
 
-    if (bodyColumn && buttonsColumn && buttonsColumn.querySelector('.button-wrapper')) {
-      buttonsColumn.className = 'pricing-card-buttons';
-      const buttonWrapper = buttonsColumn.querySelectorAll('.button-wrapper');
-      if (buttonWrapper.length === 1) {
-        buttonsColumn.classList.add('pricing-card-buttons-single');
-      }
-      pricingBody.append(buttonsColumn);
-    }
-
-    if (bodyColumn && buttonsColumn && buttonsColumn.children.length <= 0) {
-      buttonsColumn.remove();
-    }
+    transformButtonDiv(pricingBody, buttonsColumn);
 
     ul.append(li);
   });

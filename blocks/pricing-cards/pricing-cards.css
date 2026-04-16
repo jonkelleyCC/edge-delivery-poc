@@ -19,7 +19,7 @@
 
   .pricing-card-details {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     height: 100%;
     border-top: 1px solid #dadada;
     padding-top: 12px;
@@ -53,6 +53,16 @@
     text-decoration: none;
   }
 
+  .pricing-card-body .pricing-card-title {
+    margin-bottom: 5px;
+    line-height: 1;
+  }
+
+  .pricing-card-body p {
+    margin-top: 0;
+    margin-bottom: 20px ;
+  }
+
   .pricing-card-image {
     position: relative;
   }
@@ -75,21 +85,27 @@
     }
   }
 
-  .pricing-card-buttons {
+  .buttons-container {
     display: flex;
     justify-content: center;
     gap: 10px;
     flex: 1 1 auto;
   }
 
-  .pricing-card-buttons p {
+  .buttons-container p {
     width: 100%;
     max-width: 150px;
   }
 
-  .pricing-card-buttons a {
+  .buttons-container a {
     display: block;
     font-size: 14px;
     padding: 8px;
+  }
+
+  .schedule {
+    color: #b10a32;
+    font-size: 14px;
+    text-transform: uppercase;
   }
 }

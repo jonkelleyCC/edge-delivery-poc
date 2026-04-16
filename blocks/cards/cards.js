@@ -1,5 +1,6 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { TITLE_SIZES } from '../../constants/constants.js';
+import { transformButtonDiv } from '../../helpers/transformer-helper.js';
 
 /**
  * @param {HTMLElement} block The card block element
@@ -24,18 +25,7 @@ export default function decorate(block) {
     const bodyColumn = columnsInCard[1];
     const buttonsColumn = columnsInCard[2];
 
-    if (bodyColumn && buttonsColumn && buttonsColumn.querySelector('.button-wrapper')) {
-      buttonsColumn.className = 'card-buttons';
-      const buttonWrapper = buttonsColumn.querySelectorAll('.button-wrapper');
-      if (buttonWrapper.length === 1) {
-        buttonsColumn.classList.add('card-buttons-single');
-      }
-      bodyColumn.append(buttonsColumn);
-    }
-
-    if (bodyColumn && buttonsColumn && buttonsColumn.children.length <= 0) {
-      buttonsColumn.remove();
-    }
+    transformButtonDiv(bodyColumn, buttonsColumn);
 
     [...li.children].forEach((div) => {
       if (div.children.length === 1 && div.querySelector('picture')) {
