@@ -43,6 +43,11 @@ async function loadFonts() {
   }
 }
 
+function extractAmpersand(str) {
+  const match = str.match(/@\w+/);
+  return match ? match[0] : null;
+}
+
 /**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
@@ -93,22 +98,46 @@ function decorateButtons(main) {
     } catch { /* continue */ }
 
     // require authored formatting for buttonization
-    const strong = a.closest('strong');
-    const em = a.closest('em');
-    if (!strong && !em) return;
+    const type = extractAmpersand(text);
+
+    if (!type) return;
 
     p.className = 'button-wrapper';
     a.className = 'button';
-    if (strong && em) { // high-impact call-to-action
-      a.classList.add('accent');
-      const outer = strong.contains(em) ? strong : em;
-      outer.replaceWith(a);
-    } else if (strong) {
-      a.classList.add('primary');
-      strong.replaceWith(a);
-    } else {
-      a.classList.add('secondary');
-      em.replaceWith(a);
+    const linkText = text.split(type)[1].trim();
+    switch (type) {
+      case '@primary':
+        a.classList.add('primary');
+        a.title = linkText;
+        a.textContent = linkText;
+        break;
+      case '@secondary':
+        a.classList.add('secondary');
+        a.title = linkText;
+        a.textContent = linkText;
+        break;
+      case '@tertiary':
+        a.classList.add('tertiary');
+        a.title = linkText;
+        a.textContent = linkText;
+        break;
+      case '@info': {
+        a.classList.add('info-button');
+        a.title = linkText;
+        a.textContent = '';
+        const icon = document.createElement('span');
+        icon.className = 'icon icon-info';
+        const label = document.createElement('span');
+        label.textContent = linkText;
+        a.append(icon, label);
+        decorateIcons(a);
+        break;
+      }
+      default:
+        a.classList.add('accent');
+        a.title = linkText;
+        a.textContent = linkText;
+        break;
     }
   });
 }
