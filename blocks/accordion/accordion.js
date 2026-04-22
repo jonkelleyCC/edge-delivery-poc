@@ -33,8 +33,11 @@ export default function decorate(block) {
     summary.className = 'accordion-item-label';
     summary.append(...label.childNodes);
     // decorate accordion item body
-    const body = row.children[1];
+    const content = row.children[1];
+    content.className = 'accordion-item-content';
+    const body = document.createElement('div');
     body.className = 'accordion-item-body';
+    body.append(content);
     // decorate accordion item
     const details = document.createElement('details');
     details.className = 'accordion-item';
