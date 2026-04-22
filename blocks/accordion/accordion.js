@@ -1,6 +1,5 @@
 function animateAccordionItem(details, body, shouldOpen) {
   body.style.maxHeight = `${body.scrollHeight}px`;
-  console.log(body.offsetHeight, body.scrollHeight);
 
   if (shouldOpen) {
     details.setAttribute('open', '');

@@ -1,8 +1,4 @@
 /* header and nav layout */
-header nav {
-  border-bottom: 1px solid var(--text-color);
-}
-
 header .nav-wrapper {
   background-color: var(--background-color);
   width: 100%;
@@ -23,6 +19,7 @@ header nav {
   height: var(--nav-height);
   padding: 0 24px;
   font-family: var(--body-font-family);
+  border-bottom: 1px solid var(--text-color);
 }
 
 header nav[aria-expanded='true'] {
@@ -37,7 +34,7 @@ header .nav-overlay {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgb(0 0 0 / 50%);
   cursor: pointer;
   z-index: 1;
 }
@@ -226,6 +223,14 @@ header nav .nav-sections ul > li {
   font-weight: 600;
 }
 
+header nav .nav-sections ul > li > ul {
+  margin-top: 0;
+}
+
+header nav .nav-sections ul > li > ul > li {
+  font-weight: 400;
+}
+
 header nav .nav-sections .default-content-wrapper > ul {
   margin: 0;
 }
@@ -255,22 +260,9 @@ header nav .nav-sections .default-content-wrapper > ul > li.nav-drop[aria-expand
   margin-top: 12px;
 }
 
-header nav .nav-sections ul > li > ul {
-  margin-top: 0;
-}
-
-header nav .nav-sections ul > li > ul > li {
-  font-weight: 400;
-}
-
 @media (width >= 1024px) {
   header {
     border-bottom: 1px solid var(--text-color);
-  }
-
-  header nav {
-    padding: 15px 0;
-    border-bottom: none;
   }
   
   header .nav-wrapper {
@@ -292,9 +284,11 @@ header nav .nav-sections ul > li > ul > li {
     gap: 0 32px;
     max-width: 1380px;
     padding: 0 32px;
+    border-bottom: none;
   }
-
+  
   header nav[aria-expanded='true'] {
+    height: 80px;
     min-height: 0;
     overflow: visible;
   }
@@ -332,23 +326,8 @@ header nav .nav-sections ul > li > ul > li {
 
   header nav .nav-sections .nav-drop {
     position: relative;
-    /* padding-right: 16px; */
     cursor: pointer;
   }
-
-  /* header nav .nav-sections .nav-drop::after {
-    content: '';
-    display: inline-block;
-    position: absolute;
-    top: 0.5em;
-    right: 2px;
-    transform: rotate(135deg);
-    width: 6px;
-    height: 6px;
-    border: 2px solid currentcolor;
-    border-radius: 0 1px 0 0;
-    border-width: 2px 2px 0 0;
-  } */
 
   header nav .nav-sections .nav-drop[aria-expanded='true']::after {
     top: unset;
@@ -384,7 +363,7 @@ header nav .nav-sections ul > li > ul > li {
     position: absolute;
     left: -24px;
     width: 200px;
-    top: 150%;
+    top: 36px;
     padding: 16px;
     background-color: var(--light-color);
     white-space: initial;

@@ -73,8 +73,19 @@ function buildResponsiveBrandLogo(navBrand) {
     });
 
     mainLogo.replaceChildren(responsiveContainer);
-    return;
   }
+}
+
+/**
+ * Toggles all nav sections
+ * @param {Element} sections The container element
+ * @param {Boolean} expanded Whether the element should be expanded or collapsed
+ */
+function toggleAllNavSections(sections, expanded = false) {
+  if (!sections) return;
+  sections.querySelectorAll('.nav-sections .default-content-wrapper > ul > li').forEach((section) => {
+    section.setAttribute('aria-expanded', expanded);
+  });
 }
 
 function closeOnEscape(e) {
@@ -116,18 +127,6 @@ function toggleMobileNavSection(navSections, navSection) {
   const expanded = navSection.getAttribute('aria-expanded') === 'true';
   toggleAllNavSections(navSections, 'false');
   if (!expanded) navSection.setAttribute('aria-expanded', 'true');
-}
-
-/**
- * Toggles all nav sections
- * @param {Element} sections The container element
- * @param {Boolean} expanded Whether the element should be expanded or collapsed
- */
-function toggleAllNavSections(sections, expanded = false) {
-  if (!sections) return;
-  sections.querySelectorAll('.nav-sections .default-content-wrapper > ul > li').forEach((section) => {
-    section.setAttribute('aria-expanded', expanded);
-  });
 }
 
 /**
