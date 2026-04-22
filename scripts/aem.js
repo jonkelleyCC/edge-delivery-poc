@@ -534,7 +534,7 @@ async function loadBlock(block) {
   if (status !== 'loading' && status !== 'loaded') {
     block.dataset.blockStatus = 'loading';
     const { blockName } = block.dataset;
-    if (blockName === 'section-metadata') return null; // never load section-metadata block
+    if (blockName === 'section-metadata' || blockName === 'main-logo') return null; // never load section-metadata & main-logo block
     try {
       const cssLoaded = loadCSS(`${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}.css`);
       const decorationComplete = new Promise((resolve) => {
