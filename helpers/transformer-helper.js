@@ -1,4 +1,5 @@
 function transformButtonDiv(body, buttonsColumn) {
+  if (!buttonsColumn) return;
   if (buttonsColumn && buttonsColumn.children.length <= 0) {
     buttonsColumn.remove();
   } else {
