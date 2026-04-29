@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="Description" content="AEM Sidekick Library" />
+    <meta name="robots" content="noindex" />
+    <base href="/" />
+
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        background-color: #ededed;
+        height: 100%;
+      }
+      
+      helix-sidekick { display: none }
+    </style>
+    <title>Sidekick Library</title>
+  </head>
+
+  <body>
+    <script>
+      // Intercept navigator.clipboard.write to ensure section-metadata table
+      // is placed BEFORE the block table in the copied HTML.
+      // The blocks plugin always appends section metadata after the block
+      // (hardcoded in copyBlockToClipboard), so we fix it here at the clipboard level.
+      (function patchClipboard() {
+        const originalWrite = navigator.clipboard.write.bind(navigator.clipboard);
+
+        function reorderTablesInHTML(html) {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const body = doc.body;
+
+          // Due to HTML5 foster-parenting of nested/invalid table content,
+          // after parsing both tables will be siblings (or one nested).
+          // Find by first header cell text.
+          const allTables = [...body.querySelectorAll('table')];
+          const sectionMetaTable = allTables.find((t) => {
+            const firstCell = t.querySelector('tr:first-child td');
+            return firstCell && firstCell.textContent.trim().toLowerCase() === 'section metadata';
+          });
+          const blockTable = allTables.find((t) => {
+            const firstCell = t.querySelector('tr:first-child td');
+            return firstCell && firstCell.textContent.trim().toLowerCase() !== 'section metadata';
+          });
+
+          if (!sectionMetaTable || !blockTable) return html;
+
+          // Remove both from wherever they are (nested or sibling)
+          sectionMetaTable.remove();
+          blockTable.remove();
+          body.querySelectorAll('br').forEach((br) => br.remove());
+
+          // Re-insert in desired order: section metadata → br → block
+          body.appendChild(sectionMetaTable);
+          body.appendChild(doc.createElement('br'));
+          body.appendChild(blockTable);
+
+          return body.innerHTML;
+        }
+
+        navigator.clipboard.write = (items) => {
+          const patched = items.map((item) => {
+            if (!item.types.includes('text/html')) return item;
+            const patchedTypes = {};
+            for (const type of item.types) {
+              if (type === 'text/html') {
+                patchedTypes[type] = item.getType('text/html').then(async (blob) => {
+                  const html = await blob.text();
+                  const reordered = reorderTablesInHTML(html);
+                  return new Blob([reordered], { type: 'text/html' });
+                });
+              } else {
+                patchedTypes[type] = item.getType(type);
+              }
+            }
+            return new ClipboardItem(patchedTypes);
+          });
+          // Call synchronously to preserve the user-gesture context
+          return originalWrite(patched);
+        };
+      }());
+    </script>
+    <script
+      type="module"
+      src="https://www.aem.live/tools/sidekick/library/index.js"
+    ></script>
+    <script>
+      const library = document.createElement('sidekick-library');
+      library.config = {
+        base: '/tools/sidekick/library.json',
+      };
+
+      document.body.prepend(library);
+    </script>
+  </body>
+</html>

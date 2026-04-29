@@ -21,8 +21,11 @@ const TOGGLE_LABEL_ICONS = {
   'main-icon': 'camera',
 };
 
+const EXCLUDED_BLOCKS = ['section-metadata', 'main-logo', 'footer-area', 'social-area', 'copyright'];
+
 export {
   TITLE_SIZES,
   PRICING_DETAILS,
   TOGGLE_LABEL_ICONS,
+  EXCLUDED_BLOCKS,
 };
