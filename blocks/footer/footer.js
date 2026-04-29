@@ -93,7 +93,7 @@ function decorateFooterBelow(footer) {
   const footerBelowArea = footer.querySelector('.social-area-container');
   if (!footerBelowArea) return;
   footerBelowArea.classList.remove('social-area-container');
-  // wrap content in a parent container to allow centering the social area and copyright separately on desktop
+  // re-wrap footer area
   footerBelowArea.classList.add('footer-below-area');
   const content = [...footerBelowArea.children];
   const footerBelowAreaWrapper = document.createElement('div');
