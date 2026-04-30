@@ -10,6 +10,8 @@
  * governing permissions and limitations under the License.
  */
 
+import { EXCLUDED_BLOCKS } from '../constants/constants.js';
+
 /* eslint-env browser */
 function sampleRUM(checkpoint, data) {
   // eslint-disable-next-line max-len
@@ -534,7 +536,7 @@ async function loadBlock(block) {
   if (status !== 'loading' && status !== 'loaded') {
     block.dataset.blockStatus = 'loading';
     const { blockName } = block.dataset;
-    if (blockName === 'section-metadata' || blockName === 'main-logo') return null; // never load section-metadata & main-logo block
+    if (EXCLUDED_BLOCKS.includes(blockName)) return null; // never load; excluded blocks
     try {
       const cssLoaded = loadCSS(`${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}.css`);
       const decorationComplete = new Promise((resolve) => {

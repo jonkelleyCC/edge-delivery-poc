@@ -1,0 +1,32 @@
+{
+  "data": [
+    {
+      "name": "Accordion",
+      "path": "/tools/sidekick/blocks/accordion.html"
+    },
+    {
+      "name": "Cards",
+      "path": "/tools/sidekick/blocks/cards.html"
+    },
+    {
+      "name": "Columns",
+      "path": "/tools/sidekick/blocks/columns.html"
+    },
+    {
+      "name": "Fragment",
+      "path": "/tools/sidekick/blocks/fragment.html"
+    },
+    {
+      "name": "Hero",
+      "path": "/tools/sidekick/blocks/hero.html"
+    },
+    {
+      "name": "Pricing Cards",
+      "path": "/tools/sidekick/blocks/pricing-cards.html"
+    },
+    {
+      "name": "Rich Text",
+      "path": "/tools/sidekick/blocks/rich-text.html"
+    }
+  ]
+}

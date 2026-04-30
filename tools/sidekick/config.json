@@ -1,0 +1,11 @@
+{
+  "plugins": [
+    {
+      "id": "library",
+      "title": "Component Library",
+      "environments": ["edit"],
+      "url": "/tools/sidekick/library.html",
+      "includePaths": ["**.docx**", "**.xlsx**"]
+    }
+  ]
+}
