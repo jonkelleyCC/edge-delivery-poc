@@ -10,6 +10,7 @@ export default function decorate(block) {
   const section = block.closest('.section');
   const cardType = section ? section.dataset.cardType : 'default';
   const columns = section ? section.dataset.columns : '';
+  const textAlign = section ? section.dataset.textAlign : 'left';
   const titleSize = section ? section.dataset.titleSize : 'l';
 
   /* change to ul, li */
@@ -21,6 +22,7 @@ export default function decorate(block) {
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
     while (row.firstElementChild) li.append(row.firstElementChild);
+    li.className = textAlign ? `text-${textAlign}` : 'text-left';
     const columnsInCard = [...li.children];
     const bodyColumn = columnsInCard[1];
     const buttonsColumn = columnsInCard[2];

@@ -1,0 +1,79 @@
+.cards-fetch > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.cards-fetch > ul > li {
+  border: 1px solid #dadada;
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.cards-fetch .card-image {
+  line-height: 0;
+}
+
+.cards-fetch > ul > li img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.cards-fetch .card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin: 16px;
+}
+
+.cards-fetch > ul.cols-1 {
+  grid-template-columns: 1fr;
+}
+
+.cards-fetch > ul.cols-2 {
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+}
+
+.cards-fetch > ul.cols-3 {
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+}
+
+.cards-fetch .buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.cards-fetch .buttons-container p {
+  width: 50%;
+  max-width: 280px;
+}
+
+.cards-fetch .buttons-container a {
+  display: block;
+}
+
+.cards-fetch.is-loading,
+.cards-fetch.is-empty,
+.cards-fetch.is-error {
+  padding: 16px;
+}
+
+@media screen and (width < 1024px) {
+  .cards-fetch > ul.cols-2 {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .cards-fetch .buttons-container p {
+    width: 100%;
+    max-width: none;
+  }
+}
