@@ -1,6 +1,6 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { TITLE_SIZES } from '../../constants/constants.js';
-import { getCardDetail } from '../../api/card-api.js';
+import getCardDetail from '../../api/card-api.js';
 
 /**
  * Reads the GraphQL endpoint from the first authored link in the block.
@@ -33,6 +33,7 @@ function createCard(item, titleSize, textAlign) {
   const li = document.createElement('li');
   li.className = textAlign ? `text-${textAlign}` : 'text-left';
 
+  // eslint-disable-next-line
   const imageSrc = item?.image?._publishUrl || item?.image?._dynamicUrl || item?.image?._path;
   if (imageSrc) {
     const imageWrapper = document.createElement('div');
@@ -124,7 +125,6 @@ export default async function decorate(block) {
     );
 
     const items = results.flatMap((payload) => toItems(payload));
-    console.log(items)
 
     if (!items.length) {
       block.classList.remove('is-loading');
