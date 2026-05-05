@@ -9,6 +9,10 @@
       "path": "/tools/sidekick/blocks/cards.html"
     },
     {
+      "name": "Cards Fetch",
+      "path": "/tools/sidekick/blocks/cards-fetch.html"
+    },
+    {
       "name": "Columns",
       "path": "/tools/sidekick/blocks/columns.html"
     },
