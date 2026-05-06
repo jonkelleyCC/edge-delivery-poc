@@ -121,6 +121,11 @@ function decorateButtons(main) {
         a.title = linkText;
         a.textContent = linkText;
         break;
+      case '@quaternary':
+        a.classList.add('quaternary');
+        a.title = linkText;
+        a.textContent = linkText;
+        break;
       case '@info': {
         a.classList.add('info-button');
         a.title = linkText;
