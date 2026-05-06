@@ -23,6 +23,7 @@
   --dark-blue-color: #142640;
   --rich-red-color: #b10a32;
   --dark-red-color: #810724;
+  --blue-grey-color: #456580;
 
   /* fonts */
   --body-font-family: 'Open Sans', sans-serif;
@@ -275,6 +276,33 @@ a.button.tertiary[aria-disabled="true"]:focus-visible,
 button.button.tertiary:disabled,
 button.button.tertiary:disabled:hover,
 button.button.tertiary:disabled:focus-visible {
+  border-color: var(--dark-blue-color);
+  background-color: var(--dark-blue-color);
+  color: var(--white-color);
+}
+
+a.button.quaternary,
+button.button.quaternary {
+  border-color: var(--blue-grey-color);
+  background-color: var(--blue-grey-color);
+  color: var(--white-color);
+}
+
+a.button.quaternary:hover,
+a.button.quaternary:focus-visible,
+button.button.quaternary:hover,
+button.button.quaternary:focus-visible {
+  border-color: var(--dark-blue-color);
+  background-color: var(--dark-blue-color);
+  color: var(--white-color);
+}
+
+a.button.quaternary[aria-disabled="true"],
+a.button.quaternary[aria-disabled="true"]:hover,
+a.button.quaternary[aria-disabled="true"]:focus-visible,
+button.button.quaternary:disabled,
+button.button.quaternary:disabled:hover,
+button.button.quaternary:disabled:focus-visible {
   border-color: var(--dark-blue-color);
   background-color: var(--dark-blue-color);
   color: var(--white-color);
